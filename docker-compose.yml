@@ -5,6 +5,10 @@ services:
         image: postgres
         volumes:
             - ./data/db:/var/lib/postgresql/data
+        environment:
+            - POSTGRES_PASSWORD=123mudar
+            - POSTGRES_USER=userdb_desafio
+            - POSTGRES_DB=dbdesafio
         ports: 
             - "5432:5432"
         expose:
@@ -29,4 +33,6 @@ services:
         build: .
         command: python manage.py migrate
         depends_on:
-            - postgres        
+            - postgres
+        links:
+            - postgres
