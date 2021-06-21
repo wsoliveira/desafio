@@ -1,0 +1,32 @@
+version: "3.3"
+
+services:      
+    postgres:
+        image: postgres
+        volumes:
+            - ./data/db:/var/lib/postgresql/data
+        ports: 
+            - "5432:5432"
+        expose:
+            - "5432"
+
+    django:
+        build: .
+        command: python manage.py runserver 0.0.0.0:8000    
+        volumes:
+            - .:/code/appdesafio
+        ports:
+            - "8000:8000"
+        depends_on:
+            - postgres
+            - django_migrate
+        links:
+            - postgres
+        expose:
+            - "8000"    
+
+    django_migrate:
+        build: .
+        command: python manage.py migrate
+        depends_on:
+            - postgres        
