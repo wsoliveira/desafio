@@ -13,7 +13,7 @@
         -   $ .\Scripts\activate.bat (windows)
 
     - Baixar projeto do git:
-        -   $ git clone https://github.com/wsoliveira/planisto_backend.git
+        -   $ git clone https://github.com/wsoliveira/desafio.git
 
     - Docker
         -   Para subir django e o banco postegres execute:
